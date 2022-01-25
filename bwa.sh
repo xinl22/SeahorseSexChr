@@ -18,14 +18,14 @@
 
 #PBS -S /bin/bash
 
-genome0=$1
+genome=$1
 read1=$2
 read2=$3
 sample=$4
 cpu=8
 
 
-bwa mem -t $cpu $genome0 $read1 $read2  |  samtools sort -@ $cpu  -O BAM -o $genome.$sample.sorted.bam  -
+bwa mem -t $cpu $genome $read1 $read2  |  samtools sort -@ $cpu  -O BAM -o $genome.$sample.sorted.bam  -
 
 samtools index $genome.$sample.sorted.bam
 
