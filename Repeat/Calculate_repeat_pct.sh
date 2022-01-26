@@ -9,5 +9,5 @@ bedtools makewindows -g size.genome.txt -w 5000 -s 2500 >seahorse.win5k.bed
 while read p
 do
 bedtools intersect -a $p -b seahorse.win5k.bed -wo | sed -e 's/Chr/LG/g'| sed -e 's/_RaGOO//g'|grep -v "Chr0|tig" > ${p/.bed/}.txt
-Rscript TE_guppy.R ${p/.bed/}.txt
+Rscript Calculate_repeat_pct.R ${p/.bed/}.txt
 done < TE.list
